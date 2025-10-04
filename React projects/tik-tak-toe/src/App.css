@@ -1,0 +1,68 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.board{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 8px;
+  border-radius: 4px;
+  background-color: white;
+  margin-bottom: 2rem;
+
+  button.square{
+    border: 1px solid white;
+    border-radius: 0;
+    width: 3rem; 
+    height: 3rem;
+    font-family: 'JetBrains Mono';
+
+    &:hover{ background-color: darkgray; }
+  }
+}
+
+.status {
+  font-family: 'JetBrains Mono';
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+button.undo{
+  margin-right: 19rem;
+}
+
+button img{
+  width: 24px;
+}
+
+.historyNavigator {
+  display: grid;
+  width: 17rem;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, auto);
+  gap: 0.5rem;
+  
+  button:last-of-type{
+    display: none;
+  }
+}
+
+.doublePanel{
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}

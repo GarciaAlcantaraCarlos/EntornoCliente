@@ -1,0 +1,40 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  font-family: 'JetBrains Mono';
+}
+
+.gameContainer{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 15rem auto;
+  column-gap: 1rem;
+}
+
+.displayBox{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 5rem;
+  background-color: black;
+  margin: 1rem;
+  border-radius: 8px;
+
+  h2 {
+    font-size: 1.5rem;
+    margin: 0;
+    text-transform: uppercase;
+  }
+}
+
+.userActions{
+  display: flex;
+  gap: 1rem;
+}
+
+button {
+  font-size: 1.5rem;
+}
