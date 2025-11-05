@@ -1,33 +1,60 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useReducer } from 'react'
 import './App.css'
 
+interface GameState {
+  applications: number;
+  clickMultiplier: number;
+  passiveClicks: number;
+}
+
+type GameAction = {
+  trigger: 'click' | 'tick' | 'buy_passive';
+}
+
+const setup = {
+  fps: 10,
+}
+
 function App() {
-  const [count, setCount] = useState(0)
+
+  function gameReducer(state: GameState, action: GameAction) {
+    if(action.trigger === 'click') return { 
+      ...state,
+      applications: state.applications + 1,
+    }
+    if(action.trigger === 'buy_passive') return {
+      ...state,
+      passiveClicks: state.passiveClicks + 0.1,
+    }
+    if(action.trigger === 'tick') return {
+      ...state,
+      applications: state.applications + (state.passiveClicks / setup.fps),
+    }
+    throw Error ('Unknown action.')
+  }
+
+  const initialGameState = {
+    applications: 0,
+    clickMultiplier: 1,
+    passiveClicks: 0,
+  };
+
+  const [state, dispatch] = useReducer(gameReducer, initialGameState)
+
+  useEffect(() => {
+    const ticker = setInterval(() => {
+      dispatch({ trigger: 'tick' })
+    }, (1000 / setup.fps))
+
+    return () => clearInterval(ticker)
+  }, [])
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h2>{state.applications.toFixed(0)} job applications</h2>
+      <h4>{state.passiveClicks.toFixed(1)} applications per second</h4>
+      <button onClick={() => dispatch({ trigger: 'click' })}>Send job application</button>
+      <button onClick={() => dispatch({ trigger: 'buy_passive' })}>Buy a passive click</button>
     </>
   )
 }
