@@ -1,0 +1,35 @@
+.bid-key{
+  border: none;
+  padding: 8px 10px;
+  border: white 1px solid;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: white;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.red{ background-color: #ba2826; }
+  &.black{ background-color: #121212; }
+  &.green{ background-color: #365c3a; }
+  &.color-bid{ color: transparent; }
+
+  &::after{
+    content: '';
+    position: absolute;
+    background-color: rgb(93, 204, 45);
+    border: 2px solid white;
+    border-radius: 100%;
+    width: 2rem;
+    height: 2rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+  }
+
+  &:hover::after { opacity: 0.7; }
+  &:active::after, &.selected::after { opacity: 1; }
+}

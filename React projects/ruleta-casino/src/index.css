@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Neuton:ital,wght@0,200;0,300;0,400;0,700;0,800;1,400&family=Rakkas&display=swap');
+  
+:root {
+  --font-display: 'Rakkas', sans-serif;
+  font-family: 'Neuton', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color: #000000;
+  background-color: #285d36;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100dvh;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button { font-family: inherit; }

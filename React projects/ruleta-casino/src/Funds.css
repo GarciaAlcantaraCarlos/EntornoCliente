@@ -1,0 +1,44 @@
+#funds{
+  border: 1px solid white;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 2rem;
+
+  p {
+    margin: 0;
+    color: white;
+    font-size: 1.5rem;
+
+    &.special{
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      margin-inline: 1rem;
+      line-height: 100%;
+    }
+  }
+
+  .spacer { height: 1rem; }
+
+  > div {
+    display: flex;
+    align-items: center;
+  }
+
+  button{
+    font-size: 2rem;
+    background-color: transparent;
+    color: white;
+    border: none;
+    margin-top: -4px;
+    padding: 0 12px 8px;
+    cursor: pointer;
+    border-radius: 4px;
+
+    &:hover{
+      background-color: #ffffff30;
+    }
+  }
+}
